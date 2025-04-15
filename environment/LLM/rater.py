@@ -162,3 +162,39 @@ class LLMRater(ABC):
         else:
             suffix = {1: "st", 2: "nd", 3: "rd"}.get(number % 10, "th")
         return str(number) + suffix
+
+
+class Rater(ABC):
+    def __init__(self, llm: LLM, current_items_features_list, previous_items_features_list, llm_render=False, llm_query_explanation=False):
+        self.llm = llm
+        self.llm_render = llm_render
+        self.llm_query_explanation = llm_query_explanation
+        self.current_items_features_list = current_items_features_list
+        self.previous_items_features_list = previous_items_features_list
+
+    @abstractmethod
+    def query(self, user, item, num_interacted, interactions, retrieved_items):
+        pass
+
+class DummyLLMRater(LLMRater):  
+    def __init__(self, llm: LLM):
+        super().__init__(llm, [], [], llm_render=False, llm_query_explanation=False)
+        self.request_scale = "0-9"
+        self.system_prompt = "Simulated user model."
+
+    def _get_few_shot_prompts(self):
+        return []
+
+    def _get_prompt(self, user, item, num_interacted, interactions, retrieved_items):
+        return [{"role": "user", "content": "Rate this citation."}]
+
+
+
+    def adjust_rating_in(self, rating):
+        return rating
+
+    def adjust_rating_out(self, rating):
+        return rating
+
+    def adjust_text_in(self, text):
+        return text

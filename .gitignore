@@ -1,7 +1,35 @@
+# macOS system file
+.DS_Store
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# VS Code settings
+.vscode/
+
+# Jupyter and IPython
+.ipynb_checkpoints/
+
+# Environment files
+.env
+.venv/
+env/
+venv/
+.suber_env
+suber_env/
+notebooks/models/
+# Others you don't want
+*.log
+
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+
 
 # C extensions
 *.so

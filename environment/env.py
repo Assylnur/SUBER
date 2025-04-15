@@ -199,16 +199,16 @@ class Simulatio4RecSys(gym.Env):
         Given the user, the recommended item and the retieved item we construct a prompt for the LLM to predict the rating that
         the user would give to the recommended Movie.
         """
-        with torch.random.fork_rng(["cuda:0"]):
-            torch.manual_seed(self.llm_seed)
-            rating, explanation, html_interaction = self.rating_prompt.query(
+  
+        torch.manual_seed(self.llm_seed)
+        rating, explanation, html_interaction = self.rating_prompt.query(
                 self._user,
                 curr_item[0],
                 num_interacted,
                 retrieved_interactions,
                 retrieved_items,
             )
-            self.llm_seed += 1
+        self.llm_seed += 1
 
         """
         After collecting the explanation and the rating from the LLM the next step is to select the item 

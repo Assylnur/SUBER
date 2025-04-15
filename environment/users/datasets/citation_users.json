@@ -1,0 +1,893 @@
+[
+  {
+    "id": 0,
+    "preferred_topics": [
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.74,
+    "reputability_bias": 0.47
+  },
+  {
+    "id": 1,
+    "preferred_topics": [
+      "Science and Science Education",
+      "Intellectual Capital and Performance Analysis",
+      "Innovation Policy and R&D"
+    ],
+    "novelty_preference": 0.5,
+    "reputability_bias": 0.65
+  },
+  {
+    "id": 2,
+    "preferred_topics": [
+      "Research, Science, and Academia"
+    ],
+    "novelty_preference": 0.88,
+    "reputability_bias": 0.9
+  },
+  {
+    "id": 3,
+    "preferred_topics": [
+      "Health and Medical Research Impacts",
+      "History and advancements in chemistry"
+    ],
+    "novelty_preference": 0.78,
+    "reputability_bias": 0.72
+  },
+  {
+    "id": 4,
+    "preferred_topics": [
+      "Publishing and Scholarly Communication"
+    ],
+    "novelty_preference": 0.82,
+    "reputability_bias": 0.72
+  },
+  {
+    "id": 5,
+    "preferred_topics": [
+      "Big Data and Business Intelligence",
+      "Complex Systems and Time Series Analysis"
+    ],
+    "novelty_preference": 0.28,
+    "reputability_bias": 0.35
+  },
+  {
+    "id": 6,
+    "preferred_topics": [
+      "Innovation Policy and R&D"
+    ],
+    "novelty_preference": 0.32,
+    "reputability_bias": 0.25
+  },
+  {
+    "id": 7,
+    "preferred_topics": [
+      "Academic Publishing and Open Access",
+      "Complex Network Analysis Techniques",
+      "Science and Science Education"
+    ],
+    "novelty_preference": 0.29,
+    "reputability_bias": 0.33
+  },
+  {
+    "id": 8,
+    "preferred_topics": [
+      "Web visibility and informetrics",
+      "Innovation Policy and R&D",
+      "Big Data and Business Intelligence"
+    ],
+    "novelty_preference": 0.94,
+    "reputability_bias": 0.64
+  },
+  {
+    "id": 9,
+    "preferred_topics": [
+      "scientometrics and bibliometrics research",
+      "Scientific Computing and Data Management"
+    ],
+    "novelty_preference": 0.51,
+    "reputability_bias": 0.95
+  },
+  {
+    "id": 10,
+    "preferred_topics": [
+      "Higher Education Governance and Development"
+    ],
+    "novelty_preference": 0.41,
+    "reputability_bias": 0.22
+  },
+  {
+    "id": 11,
+    "preferred_topics": [
+      "Conferences and Exhibitions Management",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.39,
+    "reputability_bias": 0.53
+  },
+  {
+    "id": 12,
+    "preferred_topics": [
+      "Meta-analysis and systematic reviews",
+      "Complex Systems and Time Series Analysis",
+      "Scientific Computing and Data Management"
+    ],
+    "novelty_preference": 0.25,
+    "reputability_bias": 0.23
+  },
+  {
+    "id": 13,
+    "preferred_topics": [
+      "Science and Science Education",
+      "Conferences and Exhibitions Management",
+      "Doctoral Education Challenges and Solutions"
+    ],
+    "novelty_preference": 0.25,
+    "reputability_bias": 0.75
+  },
+  {
+    "id": 14,
+    "preferred_topics": [
+      "Academic Publishing and Open Access",
+      "Research Data Management Practices",
+      "History and advancements in chemistry"
+    ],
+    "novelty_preference": 0.41,
+    "reputability_bias": 0.66
+  },
+  {
+    "id": 15,
+    "preferred_topics": [
+      "Expert finding and Q&A systems",
+      "Academic Writing and Publishing"
+    ],
+    "novelty_preference": 0.93,
+    "reputability_bias": 0.87
+  },
+  {
+    "id": 16,
+    "preferred_topics": [
+      "Chemistry and Chemical Engineering",
+      "Innovation and Knowledge Management"
+    ],
+    "novelty_preference": 0.87,
+    "reputability_bias": 0.41
+  },
+  {
+    "id": 17,
+    "preferred_topics": [
+      "Expert finding and Q&A systems",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.37,
+    "reputability_bias": 0.51
+  },
+  {
+    "id": 18,
+    "preferred_topics": [
+      "Philosophy and History of Science",
+      "Expert finding and Q&A systems",
+      "Academic Writing and Publishing"
+    ],
+    "novelty_preference": 0.75,
+    "reputability_bias": 0.87
+  },
+  {
+    "id": 19,
+    "preferred_topics": [
+      "scientometrics and bibliometrics research"
+    ],
+    "novelty_preference": 0.51,
+    "reputability_bias": 0.5
+  },
+  {
+    "id": 20,
+    "preferred_topics": [
+      "Advanced Text Analysis Techniques",
+      "scientometrics and bibliometrics research"
+    ],
+    "novelty_preference": 0.85,
+    "reputability_bias": 0.86
+  },
+  {
+    "id": 21,
+    "preferred_topics": [
+      "Interdisciplinary Research and Collaboration",
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.91,
+    "reputability_bias": 0.79
+  },
+  {
+    "id": 22,
+    "preferred_topics": [
+      "Research Data Management Practices"
+    ],
+    "novelty_preference": 0.29,
+    "reputability_bias": 0.5
+  },
+  {
+    "id": 23,
+    "preferred_topics": [
+      "Science and Science Education",
+      "Meta-analysis and systematic reviews",
+      "Chemistry and Chemical Engineering"
+    ],
+    "novelty_preference": 0.39,
+    "reputability_bias": 0.99
+  },
+  {
+    "id": 24,
+    "preferred_topics": [
+      "scientometrics and bibliometrics research"
+    ],
+    "novelty_preference": 0.46,
+    "reputability_bias": 0.26
+  },
+  {
+    "id": 25,
+    "preferred_topics": [
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.51,
+    "reputability_bias": 0.74
+  },
+  {
+    "id": 26,
+    "preferred_topics": [
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.74,
+    "reputability_bias": 0.88
+  },
+  {
+    "id": 27,
+    "preferred_topics": [
+      "Innovation and Knowledge Management",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.27,
+    "reputability_bias": 0.73
+  },
+  {
+    "id": 28,
+    "preferred_topics": [
+      "Advanced Text Analysis Techniques",
+      "Meta-analysis and systematic reviews",
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.52,
+    "reputability_bias": 0.98
+  },
+  {
+    "id": 29,
+    "preferred_topics": [
+      "Health Sciences Research and Education",
+      "Scientific Computing and Data Management"
+    ],
+    "novelty_preference": 0.51,
+    "reputability_bias": 0.71
+  },
+  {
+    "id": 30,
+    "preferred_topics": [
+      "Biomedical Text Mining and Ontologies",
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.69,
+    "reputability_bias": 0.62
+  },
+  {
+    "id": 31,
+    "preferred_topics": [
+      "Advanced Text Analysis Techniques",
+      "Philosophy and History of Science"
+    ],
+    "novelty_preference": 0.31,
+    "reputability_bias": 0.3
+  },
+  {
+    "id": 32,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.66,
+    "reputability_bias": 0.52
+  },
+  {
+    "id": 33,
+    "preferred_topics": [
+      "Psychology Research and Bibliometrics"
+    ],
+    "novelty_preference": 0.64,
+    "reputability_bias": 0.46
+  },
+  {
+    "id": 34,
+    "preferred_topics": [
+      "Academic Writing and Publishing",
+      "Psychology Research and Bibliometrics",
+      "Climate Change Communication and Perception"
+    ],
+    "novelty_preference": 0.96,
+    "reputability_bias": 0.35
+  },
+  {
+    "id": 35,
+    "preferred_topics": [
+      "Meta-analysis and systematic reviews"
+    ],
+    "novelty_preference": 0.92,
+    "reputability_bias": 0.97
+  },
+  {
+    "id": 36,
+    "preferred_topics": [
+      "Health Sciences Research and Education",
+      "Philosophy and History of Science",
+      "Chemistry and Chemical Engineering"
+    ],
+    "novelty_preference": 0.61,
+    "reputability_bias": 0.79
+  },
+  {
+    "id": 37,
+    "preferred_topics": [
+      "Psychology Research and Bibliometrics",
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.9,
+    "reputability_bias": 0.69
+  },
+  {
+    "id": 38,
+    "preferred_topics": [
+      "Publishing and Scholarly Communication",
+      "Research Data Management Practices",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.66,
+    "reputability_bias": 0.52
+  },
+  {
+    "id": 39,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.57,
+    "reputability_bias": 0.56
+  },
+  {
+    "id": 40,
+    "preferred_topics": [
+      "Academic Writing and Publishing",
+      "Academic Publishing and Open Access"
+    ],
+    "novelty_preference": 0.33,
+    "reputability_bias": 0.4
+  },
+  {
+    "id": 41,
+    "preferred_topics": [
+      "Publishing and Scholarly Communication"
+    ],
+    "novelty_preference": 0.51,
+    "reputability_bias": 0.97
+  },
+  {
+    "id": 42,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis"
+    ],
+    "novelty_preference": 0.98,
+    "reputability_bias": 1.0
+  },
+  {
+    "id": 43,
+    "preferred_topics": [
+      "Interdisciplinary Research and Collaboration",
+      "Research Data Management Practices",
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.48,
+    "reputability_bias": 0.22
+  },
+  {
+    "id": 44,
+    "preferred_topics": [
+      "Doctoral Education Challenges and Solutions",
+      "Meta-analysis and systematic reviews"
+    ],
+    "novelty_preference": 0.34,
+    "reputability_bias": 0.47
+  },
+  {
+    "id": 45,
+    "preferred_topics": [
+      "Web visibility and informetrics",
+      "Psychology Research and Bibliometrics",
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.67,
+    "reputability_bias": 0.85
+  },
+  {
+    "id": 46,
+    "preferred_topics": [
+      "Big Data and Business Intelligence"
+    ],
+    "novelty_preference": 0.28,
+    "reputability_bias": 0.59
+  },
+  {
+    "id": 47,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.64,
+    "reputability_bias": 0.65
+  },
+  {
+    "id": 48,
+    "preferred_topics": [
+      "Biomedical Text Mining and Ontologies",
+      "Innovation Policy and R&D",
+      "Climate Change Communication and Perception"
+    ],
+    "novelty_preference": 0.83,
+    "reputability_bias": 0.89
+  },
+  {
+    "id": 49,
+    "preferred_topics": [
+      "Scientific Computing and Data Management",
+      "Academic Writing and Publishing"
+    ],
+    "novelty_preference": 0.87,
+    "reputability_bias": 0.93
+  },
+  {
+    "id": 50,
+    "preferred_topics": [
+      "Web visibility and informetrics",
+      "Conferences and Exhibitions Management",
+      "Psychology Research and Bibliometrics"
+    ],
+    "novelty_preference": 0.5,
+    "reputability_bias": 0.83
+  },
+  {
+    "id": 51,
+    "preferred_topics": [
+      "Philosophy and History of Science",
+      "Conferences and Exhibitions Management"
+    ],
+    "novelty_preference": 0.49,
+    "reputability_bias": 0.47
+  },
+  {
+    "id": 52,
+    "preferred_topics": [
+      "Doctoral Education Challenges and Solutions",
+      "Health Sciences Research and Education"
+    ],
+    "novelty_preference": 0.95,
+    "reputability_bias": 0.92
+  },
+  {
+    "id": 53,
+    "preferred_topics": [
+      "Conferences and Exhibitions Management",
+      "Big Data and Business Intelligence"
+    ],
+    "novelty_preference": 0.27,
+    "reputability_bias": 0.55
+  },
+  {
+    "id": 54,
+    "preferred_topics": [
+      "Psychology Research and Bibliometrics",
+      "Complex Network Analysis Techniques",
+      "Biomedical Text Mining and Ontologies"
+    ],
+    "novelty_preference": 0.61,
+    "reputability_bias": 0.79
+  },
+  {
+    "id": 55,
+    "preferred_topics": [
+      "Higher Education Governance and Development",
+      "Science and Science Education"
+    ],
+    "novelty_preference": 0.57,
+    "reputability_bias": 0.72
+  },
+  {
+    "id": 56,
+    "preferred_topics": [
+      "Health and Medical Research Impacts"
+    ],
+    "novelty_preference": 0.88,
+    "reputability_bias": 0.48
+  },
+  {
+    "id": 57,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques",
+      "Higher Education Governance and Development",
+      "Philosophy and History of Science"
+    ],
+    "novelty_preference": 0.81,
+    "reputability_bias": 0.75
+  },
+  {
+    "id": 58,
+    "preferred_topics": [
+      "Interdisciplinary Research and Collaboration"
+    ],
+    "novelty_preference": 0.83,
+    "reputability_bias": 0.22
+  },
+  {
+    "id": 59,
+    "preferred_topics": [
+      "Advanced Text Analysis Techniques",
+      "Psychology Research and Bibliometrics",
+      "Big Data and Business Intelligence"
+    ],
+    "novelty_preference": 0.65,
+    "reputability_bias": 0.44
+  },
+  {
+    "id": 60,
+    "preferred_topics": [
+      "Health and Medical Research Impacts",
+      "Advanced Text Analysis Techniques"
+    ],
+    "novelty_preference": 0.97,
+    "reputability_bias": 0.26
+  },
+  {
+    "id": 61,
+    "preferred_topics": [
+      "Science and Science Education",
+      "Interdisciplinary Research and Collaboration",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.79,
+    "reputability_bias": 0.28
+  },
+  {
+    "id": 62,
+    "preferred_topics": [
+      "Scientific Computing and Data Management",
+      "Health Sciences Research and Education"
+    ],
+    "novelty_preference": 0.21,
+    "reputability_bias": 0.96
+  },
+  {
+    "id": 63,
+    "preferred_topics": [
+      "Philosophy and History of Science",
+      "scientometrics and bibliometrics research",
+      "Chemistry and Chemical Engineering"
+    ],
+    "novelty_preference": 0.56,
+    "reputability_bias": 0.7
+  },
+  {
+    "id": 64,
+    "preferred_topics": [
+      "Innovation and Knowledge Management",
+      "History and advancements in chemistry",
+      "Climate Change Communication and Perception"
+    ],
+    "novelty_preference": 0.3,
+    "reputability_bias": 0.53
+  },
+  {
+    "id": 65,
+    "preferred_topics": [
+      "Doctoral Education Challenges and Solutions"
+    ],
+    "novelty_preference": 0.34,
+    "reputability_bias": 0.99
+  },
+  {
+    "id": 66,
+    "preferred_topics": [
+      "Advanced Text Analysis Techniques",
+      "scientometrics and bibliometrics research"
+    ],
+    "novelty_preference": 0.25,
+    "reputability_bias": 0.48
+  },
+  {
+    "id": 67,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis"
+    ],
+    "novelty_preference": 0.31,
+    "reputability_bias": 0.32
+  },
+  {
+    "id": 68,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques",
+      "Academic Publishing and Open Access",
+      "Expert finding and Q&A systems"
+    ],
+    "novelty_preference": 0.66,
+    "reputability_bias": 0.25
+  },
+  {
+    "id": 69,
+    "preferred_topics": [
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.94,
+    "reputability_bias": 0.69
+  },
+  {
+    "id": 70,
+    "preferred_topics": [
+      "Psychology Research and Bibliometrics",
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.68,
+    "reputability_bias": 0.74
+  },
+  {
+    "id": 71,
+    "preferred_topics": [
+      "Publishing and Scholarly Communication",
+      "Biomedical Text Mining and Ontologies",
+      "Big Data and Business Intelligence"
+    ],
+    "novelty_preference": 0.39,
+    "reputability_bias": 0.26
+  },
+  {
+    "id": 72,
+    "preferred_topics": [
+      "Academic Writing and Publishing",
+      "Innovation and Knowledge Management",
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.22,
+    "reputability_bias": 0.76
+  },
+  {
+    "id": 73,
+    "preferred_topics": [
+      "Interdisciplinary Research and Collaboration"
+    ],
+    "novelty_preference": 0.49,
+    "reputability_bias": 0.33
+  },
+  {
+    "id": 74,
+    "preferred_topics": [
+      "Academic Publishing and Open Access",
+      "Psychology Research and Bibliometrics"
+    ],
+    "novelty_preference": 0.7,
+    "reputability_bias": 0.93
+  },
+  {
+    "id": 75,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis"
+    ],
+    "novelty_preference": 1.0,
+    "reputability_bias": 0.95
+  },
+  {
+    "id": 76,
+    "preferred_topics": [
+      "Biomedical Text Mining and Ontologies"
+    ],
+    "novelty_preference": 0.95,
+    "reputability_bias": 0.89
+  },
+  {
+    "id": 77,
+    "preferred_topics": [
+      "Science and Science Education"
+    ],
+    "novelty_preference": 0.28,
+    "reputability_bias": 0.27
+  },
+  {
+    "id": 78,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis",
+      "Health Sciences Research and Education",
+      "Academic Writing and Publishing"
+    ],
+    "novelty_preference": 0.91,
+    "reputability_bias": 0.39
+  },
+  {
+    "id": 79,
+    "preferred_topics": [
+      "Health and Medical Research Impacts",
+      "Climate Change Communication and Perception"
+    ],
+    "novelty_preference": 0.34,
+    "reputability_bias": 0.96
+  },
+  {
+    "id": 80,
+    "preferred_topics": [
+      "Research Data Management Practices",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.3,
+    "reputability_bias": 0.78
+  },
+  {
+    "id": 81,
+    "preferred_topics": [
+      "Health Sciences Research and Education",
+      "Web visibility and informetrics"
+    ],
+    "novelty_preference": 0.24,
+    "reputability_bias": 0.83
+  },
+  {
+    "id": 82,
+    "preferred_topics": [
+      "Conferences and Exhibitions Management",
+      "Doctoral Education Challenges and Solutions",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.42,
+    "reputability_bias": 0.59
+  },
+  {
+    "id": 83,
+    "preferred_topics": [
+      "Health Sciences Research and Education"
+    ],
+    "novelty_preference": 0.54,
+    "reputability_bias": 0.94
+  },
+  {
+    "id": 84,
+    "preferred_topics": [
+      "Psychology Research and Bibliometrics"
+    ],
+    "novelty_preference": 0.95,
+    "reputability_bias": 0.63
+  },
+  {
+    "id": 85,
+    "preferred_topics": [
+      "scientometrics and bibliometrics research"
+    ],
+    "novelty_preference": 0.78,
+    "reputability_bias": 0.39
+  },
+  {
+    "id": 86,
+    "preferred_topics": [
+      "Chemistry and Chemical Engineering"
+    ],
+    "novelty_preference": 0.6,
+    "reputability_bias": 0.51
+  },
+  {
+    "id": 87,
+    "preferred_topics": [
+      "Health and Medical Research Impacts"
+    ],
+    "novelty_preference": 0.58,
+    "reputability_bias": 0.67
+  },
+  {
+    "id": 88,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis"
+    ],
+    "novelty_preference": 0.79,
+    "reputability_bias": 0.59
+  },
+  {
+    "id": 89,
+    "preferred_topics": [
+      "Complex Systems and Time Series Analysis",
+      "scientometrics and bibliometrics research",
+      "Biomedical Text Mining and Ontologies"
+    ],
+    "novelty_preference": 0.6,
+    "reputability_bias": 0.69
+  },
+  {
+    "id": 90,
+    "preferred_topics": [
+      "Chemistry and Chemical Engineering",
+      "Philosophy and History of Science"
+    ],
+    "novelty_preference": 0.41,
+    "reputability_bias": 0.65
+  },
+  {
+    "id": 91,
+    "preferred_topics": [
+      "Chemistry and Chemical Engineering"
+    ],
+    "novelty_preference": 0.36,
+    "reputability_bias": 0.56
+  },
+  {
+    "id": 92,
+    "preferred_topics": [
+      "Interdisciplinary Research and Collaboration"
+    ],
+    "novelty_preference": 0.32,
+    "reputability_bias": 0.99
+  },
+  {
+    "id": 93,
+    "preferred_topics": [
+      "Philosophy and History of Science",
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.29,
+    "reputability_bias": 0.88
+  },
+  {
+    "id": 94,
+    "preferred_topics": [
+      "Meta-analysis and systematic reviews"
+    ],
+    "novelty_preference": 0.87,
+    "reputability_bias": 0.54
+  },
+  {
+    "id": 95,
+    "preferred_topics": [
+      "Publishing and Scholarly Communication"
+    ],
+    "novelty_preference": 0.4,
+    "reputability_bias": 0.64
+  },
+  {
+    "id": 96,
+    "preferred_topics": [
+      "Higher Education Governance and Development",
+      "Doctoral Education Challenges and Solutions"
+    ],
+    "novelty_preference": 0.39,
+    "reputability_bias": 0.61
+  },
+  {
+    "id": 97,
+    "preferred_topics": [
+      "Intellectual Capital and Performance Analysis"
+    ],
+    "novelty_preference": 0.78,
+    "reputability_bias": 0.7
+  },
+  {
+    "id": 98,
+    "preferred_topics": [
+      "Chemistry and Chemical Engineering",
+      "History and advancements in chemistry"
+    ],
+    "novelty_preference": 0.65,
+    "reputability_bias": 0.25
+  },
+  {
+    "id": 99,
+    "preferred_topics": [
+      "Innovation and Knowledge Management",
+      "Academic Writing and Publishing",
+      "Scientific Computing and Data Management"
+    ],
+    "novelty_preference": 0.86,
+    "reputability_bias": 0.59
+  }
+]
