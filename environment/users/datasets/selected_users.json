@@ -1,0 +1,18 @@
+[{
+    "id": 68,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques"
+    ],
+    "novelty_preference": 0.66,
+    "reputability_bias": 0.25
+  },
+  {
+    "id": 74,
+    "preferred_topics": [
+      "Academic Publishing and Open Access"
+    ],
+    "novelty_preference": 0.7,
+    "reputability_bias": 0.93
+  }
+
+]
