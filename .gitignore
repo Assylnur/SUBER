@@ -19,6 +19,7 @@ venv/
 .suber_env
 suber_env/
 notebooks/models/
+environment/citations/datasets/
 # Others you don't want
 *.log
 
