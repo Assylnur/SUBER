@@ -13,3 +13,6 @@ class Citation(Item):
 
         # ✅ Add this line to avoid crashes
         self.vote_average = self.norm_cite  # or norm_year, or a custom calculation
+
+    def __str__(self):
+        return f"Title: {self.title} - publication year: {self.year} - topics: {self.topics} - topic scores = {self.topic_scores} - norm_cite: {self.norm_cite} - norm_year: {self.norm_year}"

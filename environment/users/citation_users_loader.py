@@ -15,8 +15,6 @@ class CitationUsersLoader(UsersLoader):
             )
             user = User(
                 name=f"CitationUser{entry['id']}",
-                gender="M",
-                age=30,
                 description=description
             )
             self.users.append(user)

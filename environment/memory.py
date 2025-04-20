@@ -40,11 +40,12 @@ class Memory:
         Args:
             user_id (integer): id of a user
             items_ids (list of integers): list of all recommended items ids
-            scores (list of integers): the corresponding scores to the items
+            scores (list of integers): the corresponding scores to the items -> 0 if clicked, 1 if not clicked
 
         Return:
             None
         """
+
         if user_id not in self.user_to_seen_films:
             self._initialize_user(user_id)
         for i, item_id in enumerate(items_ids):

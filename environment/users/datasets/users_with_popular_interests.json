@@ -1,0 +1,30 @@
+[
+  {
+    "id": 68,
+    "preferred_topics": [
+      "Complex Network Analysis Techniques",
+      "Academic Publishing and Open Access",
+      "Expert finding and Q&A systems"
+    ],
+    "novelty_preference": 0.66,
+    "reputability_bias": 0.25
+  },
+  {
+    "id": 74,
+    "preferred_topics": [
+      "Academic Publishing and Open Access",
+      "Psychology Research and Bibliometrics"
+    ],
+    "novelty_preference": 0.7,
+    "reputability_bias": 0.93
+  },
+  {
+    "id": 40,
+    "preferred_topics": [
+      "Academic Writing and Publishing",
+      "Academic Publishing and Open Access"
+    ],
+    "novelty_preference": 0.33,
+    "reputability_bias": 0.4
+  }
+]

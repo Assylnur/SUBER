@@ -32,8 +32,6 @@ class UsersCSVLoader(UsersLoader):
     This class is used to load users from a csv file.
     The csv file must have the following columns:
     - name
-    - gender
-    - age
     - description
 
     The default location of the csv is in environment/users/datasets
@@ -58,11 +56,7 @@ class UsersCSVLoader(UsersLoader):
         for index, row in df.iterrows():
             user = User(
                 name=row["name"],
-                gender=row["gender"],
-                age=int(row["age"]),
-                description=row["description"],
-                job=row["job"] if "job" in row else "",
-                hobby=row["hobby"] if "hobby" in row else "",
+                description=row["description"]
             )
             user.id = i
             i += 1
