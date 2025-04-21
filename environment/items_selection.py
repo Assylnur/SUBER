@@ -111,7 +111,7 @@ class GreedySelectorRandom(ItemsSelector):
 class RandomSelector(ItemsSelector):
     """
     Object that is responsable to select Movies, given a list of items, with predicted rating (from LLM), selects the one that the user will see.
-    In this case can select more tha one item. For every recommended item the user will watch it with probability p
+    In this case can select more than one item. For every recommended item the user will watch it with probability p
 
     Attributes:
         p (float): probability to watch a item

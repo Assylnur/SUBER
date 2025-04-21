@@ -5,6 +5,7 @@
         "Complex Network Analysis Techniques",
         "Academic Publishing and Open Access"
       ],
+      "relevance_threshold": 0.7,
       "novelty_preference": 0.46,
       "reputability_bias": 0.75
     }

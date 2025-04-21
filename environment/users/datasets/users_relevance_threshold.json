@@ -1,0 +1,32 @@
+[
+    {
+      "id": 68,
+      "preferred_topics": [
+        "scientometrics and bibliometrics research",
+        "Academic Publishing and Open Access"
+      ],
+      "relevance_threshold": 0.7,
+      "novelty_preference": 0.66,
+      "reputability_bias": 0.25
+    },
+    {
+        "id": 64,
+        "preferred_topics": [
+          "scientometrics and bibliometrics research",
+          "Academic Publishing and Open Access"
+        ],
+        "relevance_threshold": 0.5,
+        "novelty_preference": 0.66,
+        "reputability_bias": 0.25
+    },
+    {
+        "id": 20,
+        "preferred_topics": [
+          "scientometrics and bibliometrics research",
+          "Academic Publishing and Open Access"
+        ],
+        "relevance_threshold": 0.3,
+        "novelty_preference": 0.66,
+        "reputability_bias": 0.25
+    }
+]

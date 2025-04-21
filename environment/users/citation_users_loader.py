@@ -1,23 +1,22 @@
-from environment.users import UsersLoader
-from environment.users.user import User
+from environment.users.citation_user import CitationUser
 import json
+from abc import ABC
+from typing import List
 
-class CitationUsersLoader(UsersLoader):
+class CitationUsersLoader(ABC):
     def __init__(self, json_path):
         super().__init__()
         with open(json_path) as f:
             user_data = json.load(f)
         self.users = []
         for entry in user_data:
-            description = (
-                "Interested in: " + ", ".join(entry["preferred_topics"]) +
-                f". Prefers novelty: {entry['novelty_preference']}, reputability bias: {entry['reputability_bias']}"
-            )
-            user = User(
-                name=f"CitationUser{entry['id']}",
-                description=description
+            user = CitationUser(
+                interests=entry['preferred_topics'],
+                relevance_threshold=entry['relevance_threshold'],
+                reputability_bias=entry['reputability_bias'],
+                novelty_bias=entry['novelty_preference']
             )
             self.users.append(user)
 
-    def get_users(self):
+    def get_users(self) -> List[CitationUser]:
         return self.users

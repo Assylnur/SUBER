@@ -2,16 +2,18 @@ import pandas as pd
 import ast
 from environment.citations.citation import Citation
 from environment.item import ItemsLoader
+from abc import ABC
+from typing import List
 
-class CitationsLoader(ItemsLoader):
+class CitationsLoader(ABC):
     def __init__(self, csv_path):
-        super().__init__(name_dataset="citations")
+        super().__init__()
         self.data = pd.read_csv(csv_path)
 
-    def load_all_ids(self):
+    def load_all_ids(self) -> List[int]:
         return list(self.data.index)
 
-    def load_items_from_ids(self, id_list):
+    def load_items_from_ids(self, id_list) -> List[Citation]:
         items = []
         for idx in id_list:
             row = self.data.iloc[idx]
@@ -25,7 +27,9 @@ class CitationsLoader(ItemsLoader):
                 topic_scores=scores,
                 cited_by_count=row['cited_by_count'],
                 norm_cite=row['cited_by_count_norm'],
-                norm_year=row['publication_year_norm']
+                quartile_cite=row['cited_by_count_quartile'],
+                norm_year=row['publication_year_norm'],
+                quartile_year=row['publication_year_quartile']
             )
             items.append(item)
         return items

@@ -3,6 +3,7 @@
     "preferred_topics": [
       "Complex Network Analysis Techniques"
     ],
+    "relevance_threshold": 0.7,
     "novelty_preference": 0.66,
     "reputability_bias": 0.25
   },
@@ -11,6 +12,7 @@
     "preferred_topics": [
       "Academic Publishing and Open Access"
     ],
+    "relevance_threshold": 0.4,
     "novelty_preference": 0.7,
     "reputability_bias": 0.93
   }

@@ -2,28 +2,30 @@
   {
     "id": 68,
     "preferred_topics": [
-      "Complex Network Analysis Techniques",
-      "Academic Publishing and Open Access",
-      "Expert finding and Q&A systems"
+      "scientometrics and bibliometrics research",
+      "Academic Publishing and Open Access"
     ],
+    "relevance_threshold": 0.7,
     "novelty_preference": 0.66,
     "reputability_bias": 0.25
   },
   {
     "id": 74,
     "preferred_topics": [
-      "Academic Publishing and Open Access",
-      "Psychology Research and Bibliometrics"
+      "scientometrics and bibliometrics research", 
+      "Research Data Management Practices"
     ],
+    "relevance_threshold": 0.5,
     "novelty_preference": 0.7,
     "reputability_bias": 0.93
   },
   {
     "id": 40,
     "preferred_topics": [
-      "Academic Writing and Publishing",
-      "Academic Publishing and Open Access"
+      "scientometrics and bibliometrics research", 
+      "Science and Science Education"
     ],
+    "relevance_threshold": 0.6,
     "novelty_preference": 0.33,
     "reputability_bias": 0.4
   }

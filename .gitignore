@@ -199,3 +199,6 @@ tmp/
 internal/checkpoints/
 internal/checkpoints_rebuttal/
 todo*
+
+notebooks/scratchbooks/
+notebooks/debug_log/

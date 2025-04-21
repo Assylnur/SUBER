@@ -27,6 +27,7 @@ def generate_users(num_users, topic_pool):
         users.append({
             "id": i,
             "preferred_topics": random.sample(topic_pool, k=random.randint(1, 3)),
+            "relevance_threshold": round(random.uniform(0.2, 1.0), 2),
             "novelty_preference": round(random.uniform(0.2, 1.0), 2),
             "reputability_bias": round(random.uniform(0.2, 1.0), 2)
         })

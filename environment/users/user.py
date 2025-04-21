@@ -27,3 +27,4 @@ class User:
     @staticmethod
     def get_num_users():
         return User.id_counter
+
