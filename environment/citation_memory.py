@@ -13,10 +13,10 @@ class UserPaperInteraction:
         self.num_clicks = num_clicks
 
     def __str__(self):
-        return f"rating = {self.rating}, num_clicks = {self.num_clicks}"
+        return f"rating = {self.rating} - num_clicks = {self.num_clicks}"
 
     def __repr__(self):
-        return f"rating = {self.rating}, num_clicks = {self.num_clicks}"
+        return f"rating = {self.rating} - num_clicks = {self.num_clicks}"
 
 
 class CitationMemory:

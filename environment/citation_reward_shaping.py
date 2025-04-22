@@ -8,16 +8,25 @@ class CitationRewardReshapingExpDecay():
         super().__init__()
 
     def reshape(
-        self, item_interactions: typing.List[UserPaperInteraction], rating: float
+        self, item_interactions: typing.List[UserPaperInteraction], raw_reward: float
     ) -> float:
 
         if len(item_interactions) == 1:
-            return rating, False
+            return raw_reward, False
 
-        print(f"item interactions = {item_interactions}")
+        # print(f"item interactions = {item_interactions}")
         num_clicks = item_interactions[-1].num_clicks
 
+        if raw_reward < 0:
+            min_penalty, max_penalty = 0.5, 1.0
+            # compute magnitude in [0.5,1.0), growing with count
+            mag = min_penalty + (max_penalty - min_penalty) * (1 - self.q**(num_clicks - 1))
+            return -mag, False
+
+        decay = self.q ** (num_clicks - 1)
+
         return (
-            rating * math.pow(self.q, float(num_clicks)),
+            raw_reward * decay -0.5 * (1 - decay),
+            # raw_reward * math.pow(self.q, float(num_clicks)),
             False,
         )

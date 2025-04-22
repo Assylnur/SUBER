@@ -54,26 +54,25 @@ class UserEnv(gym.Env):
     def __init__(
         self,
         render_mode: str,
-        debug_path: str,
         items_loader: ItemsLoader,
         user_list: List[CitationUser],
         items_selector: ItemsSelector,
         reward_shaping: CitationRewardReshapingExpDecay,
         render_path: str = "./tmp/render/",
         debug: bool = False,
+        debug_path: Optional[str] = None,
+        max_interactions: int = 50
     ):
 
         self.render_mode = render_mode
         self.render_path = render_path
         self.metadata = {"render_modes": ["human", "csv"]}
+        self.max_interactions = max_interactions
 
         self.debug = debug
         self.debug_path = debug_path
         if self.debug:
             sys.stdout = open(self.debug_path, "w", buffering=1)
-
-
-
 
         self.rater = RuleBasedCitationRater()
 
@@ -93,7 +92,7 @@ class UserEnv(gym.Env):
         self.num_step = 0
 
         self.window_size = 20
-        self.item_dim = 384 + 4     # test embedding + year + citation + user topic + interact nums
+        self.item_dim = 384     # test embedding
         self.hidden_dim = 256
 
         self.encoder = HistoryRNNEncoder(
@@ -108,121 +107,112 @@ class UserEnv(gym.Env):
 
         # ✅ Updated observation space
         self.observation_space = spaces.Dict({
-            # "quartile_year": spaces.Box(low=0.0, high=1.0, shape=(1,), dtype=np.float32),
-            # "quartile_cite": spaces.Box(low=0.0, high=1.0, shape=(1,), dtype=np.float32),
-            # "user_topic_embedding": spaces.Box(low=-1.0, high=1.0, shape=(384 * 3,), dtype=np.float32),
-            "history_embedding":   spaces.Box(-np.inf, np.inf, shape=(self.hidden_dim,),  dtype=np.float32),
-            # "topics_embedding": spaces.Box(low=-1.0, high=1.0, shape=(384 * self.num_items,), dtype=np.float32),
-            # "interact_nums": spaces.Box(low=-1.0, high=1.0, shape=(self.num_items,), dtype=np.float32),
-            # "click_embedding":  spaces.Box(low=-1.0, high=1.0, shape=(self.num_items,), dtype=np.float32),
-            # "item_topic_embedding": spaces.Box(low=-1.0, high=1.0, shape=(384 * 3,), dtype=np.float32),
+            "history_embedding": spaces.Box(-np.inf, np.inf, shape=(self.hidden_dim,),  dtype=np.float32),
+            "user_topics_embedding": spaces.Box(-np.inf, np.inf, shape=(3, 384), dtype=np.float32),
+            "interactions": spaces.Box(0, self.max_interactions, shape=(1,), dtype=np.int32),   # num interaction for current paper
+            "publication_year_quar": spaces.Box(-1, 1, shape=(1,), dtype=np.float32),
+            "citation_quar": spaces.Box(-1, 1, shape=(1,), dtype=np.float32),
+            "click_array": spaces.Box(0, 1, shape=(1, self.max_interactions), dtype=np.int32)
         })
 
-        self.topics_embedding = np.zeros((384 * self.num_items))
+        # self.user_topics_embedding = np.zeros((384 * self.num_items))
         self.click_embedding = np.zeros((self.num_items))
 
         self.action_space = spaces.Discrete(self.num_items)
 
     def reset(self,  seed: Optional[int] = None, options: Optional[dict] = None, user_id=None):
         super().reset(seed=seed)
-        self.clean_memory()
-        self.num_step = 0
+        # self.clean_memory()
+        
         # self.recommended_paper = set()
 
         if user_id is None:
             user_id = self.np_random.integers(low=0, high=self.num_users)
 
-        self._user = self.user_list[user_id]
-        print(self._user)
+        self._user = [user for user in self.user_list if user.id == user_id][0]
+        topics_embedding = self.bert_model.encode(self._user.interests)
+        if topics_embedding.shape[0] < 3:
+            pad = np.zeros((3 - topics_embedding.shape[0], topics_embedding.shape[1]), dtype=topics_embedding.dtype)
+            topics_embedding = np.concatenate([topics_embedding, pad], axis=0)
+        self.user_topics_embedding = topics_embedding
+        # print(self._user)
         self._items_interact = tuple()
         self._items_click = tuple()
-
-        # ✅ Embed user's research description
-        self.user_topic_embedding = self.bert_model.encode(self._user.interests)
 
         zero_feat = np.zeros(self.item_dim, dtype=np.float32)
         self.history_buffer = deque([zero_feat] * self.window_size, maxlen=self.window_size)
 
         info = {
-            "user_id": self._user.id
+            "user_id": self._user.id,
+            "item_interact": self._items_interact,
+            "item_clicks": self._items_click
         }
+
+        # if self.num_step > 500:
+        #     self.num_step = 0
+        #     self.clear_memory()
 
         return self._get_obs(), info
 
     def step(self, action: int):
         self.num_step += 1
         item = self.items_loader.load_items_from_ids(id_list=[action])[0]
-        print(item)
+        # print(item)
         user_rating = self.rater.rate(self._user, item)
-        click = 1 if random.random() < user_rating else 0
-        print(f"{user_rating} >> {'clicked' if click else 'ignored'}")
+        # click = 1 if random.random() < user_rating else 0
+        if action in self._items_interact:
+            click = 0
+        else:
+            click = 1 if user_rating > 0.5 else 0
+        # print(f"Rating: {user_rating} >> {'clicked' if click else 'ignored'}")
 
         item_emb = self.bert_model.encode(item.topics).astype(np.float32).mean(axis=0)   # (384,)
-        quart_year = np.array([item.quartile_year], dtype=np.float32)
-        quart_cite = np.array([item.quartile_cite], dtype=np.float32)
-        interact_num = np.array([self._items_interact.count(action)], dtype=np.float32)
-        click_arr = np.array([click], dtype=np.float32)
+        # quart_year = np.array([item.quartile_year], dtype=np.float32)
+        # quart_cite = np.array([item.quartile_cite], dtype=np.float32)
+        # click_arr = np.array([click], dtype=np.float32)
 
-        step_feat = np.concatenate([
-            item_emb, quart_year, quart_cite,
-            interact_num, click_arr
-        ], axis=0)
+        # step_feat = np.concatenate([
+        #     item_emb, quart_year, quart_cite, click_arr
+        # ], axis=0)
 
-        self.history_buffer.append(step_feat)
+        self.history_buffer.append(item_emb)
 
         self._items_interact = self._items_interact + (action,)
         self._items_click = self._items_click + (click,)
 
-        reward = user_rating if click else 0
+        reward = user_rating * 2 if click else -0.5
         self.memory.update_memory(self._user.id, [action], [reward])
 
         # Go until at least 5 clicks or randomize, whichever comes later
-        if self._items_click.count(1) < 5:
-            terminated = False
-        elif len(self._items_click) == 50:
+        if len(self._items_click) == self.max_interactions:
             terminated = True
         else:
-            terminated = self.np_random.choice([True, False], p=[0.025, 0.975])
+            terminated = False
 
-        if terminated:
-            print(f"🎯 User {self._user.id} - End episode with {self._items_click.count(1)}/{len(self._items_click)} clicks - avg = {self._items_click.count(1)/len(self._items_click)}.")
-        observation = self._get_obs()
+        observation = self._get_obs(action=action)
 
         item_interactions = self.memory.user_to_shown_papers[self._user.id][action]
         reward, _ = self.reward_shaping.reshape(item_interactions, reward)
 
         info = {
-            "user_id": self._user.id
+            "user_id": self._user.id,
+            "item_interact": self._items_interact,
+            "item_clicks": self._items_click
         }
+
+        if terminated:
+            print(f"🎯 User {self._user.id} - End episode with {self._items_click.count(1)}/{len(self._items_click)} clicks - avg = {self._items_click.count(1)/len(self._items_click)}.")
+        print(f"user = {self._user.id} - action = {action} - rating = {user_rating} - click = {click} - interact_num = {observation['interactions']} - reward = {reward}")
 
         return observation, reward, terminated, False, info
 
-    def _get_obs(self):
+    def _get_obs(self, action=None):
         """
         State contains:
             1. the embeddings of user interction history
             2. whether or not the paper is clicked by the user
         """
 
-        # interacted_paper = self.items_loader.load_items_from_ids(self._items_interact)
-        # topics_embedding = [paper.topics for paper in interacted_paper]
-        # topics_embedding = np.concatenate(list(self.bert_model.encode(topics_embedding)), axis=0)
-        # interact_nums = [self._items_interact[:i+1].count(id) for idx, id in enumerate(self._items_interact)]
-        # years = [paper.quartile_year for paper in interacted_paper]
-        # cites = [paper.quartile_cite for paper in interacted_paper]
-        # click_embedding = np.array(self._items_click, dtype=np.float32)
-
-        # item_seq  = np.stack(self.item_emb_buffer, axis=0)          # (window, 384)
-        # click_seq = np.array(self.click_buffer, dtype=np.float32)  # (window,)
-
-        # # convert & add batch dim
-        # item_tensor  = torch.from_numpy(item_seq)[None,...]               # (1, window, 384)
-        # click_tensor = torch.from_numpy(click_seq.reshape(self.window_size,1))[None,...]  # (1, window, 1)
-
-        # # run through the encoder
-        # with torch.no_grad():
-        #     hist_emb = self.encoder(item_tensor, click_tensor)  # (1, hidden_dim)
-        # hist_emb = hist_emb.squeeze(0).cpu().numpy()            # (hidden_dim,)
 
         seq = np.stack(self.history_buffer, axis=0)          # (window, step_feat_dim)
         seq_tensor = torch.from_numpy(seq)[None, ...]      # (1, window, step_feat_dim)
@@ -232,30 +222,36 @@ class UserEnv(gym.Env):
 
         hist_emb = hist_emb.squeeze(0).cpu().numpy()
 
-        # obs = {
-        #     "history_embedding": hist_emb,
-        # }
+        if action:
+            interaction = self.memory.get_num_interaction(user_id=self._user.id, item_id=action)
+            paper = self.items_loader.load_items_from_ids([action])[0]
+            items_click = np.array(self._items_click)
+            items_click = np.pad(items_click, (0, self.max_interactions - items_click.shape[0]), mode="constant", constant_values=0)
 
-        # obs = {
-        #     "quartile_year": np.array(years, dtype=np.float32),
-        #     "quartile_cite": np.array(cites, dtype=np.float32),
-        #     "user_topic_embedding": np.concatenate(list(self.user_topic_embedding), axis=0),
-        #     "history_embedding": hist_emb.astype(np.float32),
-        #     # "topics_embedding": topics_embedding,
-        #     "interact_nums": interact_nums,
-        #     # "click_embedding":  click_embedding,
-        #     # "item_topic_embedding": np.zeros(384, dtype=np.float32),
-        # }
+            obs = {
+                "history_embedding": hist_emb,
+                "user_topics_embedding": self.user_topics_embedding,
+                "interactions": interaction,
+                "publication_year_quar": paper.quartile_year,
+                "citation_quar": paper.quartile_cite,
+                "click_array": items_click
+            }
 
-        return {"history_embedding": hist_emb}
+        else:
+            obs = {
+                "history_embedding": hist_emb,
+                "user_topics_embedding": self.user_topics_embedding,
+                "interactions": 0,
+                "publication_year_quar": -1,
+                "citation_quar": -1,
+                "click_array": np.zeros((1, self.max_interactions))
+            }
+
+        return obs
 
     def clean_memory(self):
         self.memory = CitationMemory(self.items_loader)
 
-
-# import gymnasium as gym
-# import numpy as np
-# from gymnasium import spaces
 
 class FlatObsWrapper(gym.Wrapper):
     def __init__(self, env):
@@ -264,13 +260,12 @@ class FlatObsWrapper(gym.Wrapper):
         # ✅ Define flat observation space including embeddings
         self.observation_space = spaces.Dict({
             "history_embedding": spaces.Box(-np.inf, np.inf, shape=(self.hidden_dim,),  dtype=np.float32),
+            "user_topics_embedding": spaces.Box(-np.inf, np.inf, shape=(3, 384), dtype=np.float32),
+            "interactions": spaces.Box(0, 50, shape=(1,), dtype=np.int32),
+            "publication_year_quar": spaces.Box(0, 1, shape=(1,), dtype=np.float32),
+            "citation_quar": spaces.Box(0, 1, shape=(1,), dtype=np.float32),
+            "click_array": spaces.Box(0, 1, shape=(1, self.max_interactions), dtype=np.int32)
         })
-        # self.observation_space = spaces.Dict({
-        #     "item_norm_year": spaces.Box(low=0.0, high=1.0, shape=(1,), dtype=np.float32),
-        #     "item_norm_cite": spaces.Box(low=0.0, high=1.0, shape=(1,), dtype=np.float32),
-        #     "user_topic_embedding": spaces.Box(low=-1.0, high=1.0, shape=(384,), dtype=np.float32),
-        #     # "item_topic_embedding": spaces.Box(low=-1.0, high=1.0, shape=(384,), dtype=np.float32),
-        # })
 
         self.action_space = env.action_space  # Delegate to base env
 
@@ -285,9 +280,10 @@ class FlatObsWrapper(gym.Wrapper):
     def _transform_obs(self, obs):
         # No major transformation needed, just fix data types if necessary
         return {
-            "history_embedding": obs["history_embedding"]
-            # "item_norm_year": np.array(obs["item_norm_year"], dtype=np.float32),
-            # "item_norm_cite": np.array(obs["item_norm_cite"], dtype=np.float32),
-            # "user_topic_embedding": np.array(obs["user_topic_embedding"], dtype=np.float32),
-            # "item_topic_embedding": np.array(obs["item_topic_embedding"], dtype=np.float32),
+            "history_embedding": obs["history_embedding"],
+            "user_topics_embedding": obs["user_topics_embedding"],
+            "interactions": obs["interactions"],
+            "publication_year_quar": obs["publication_year_quar"],
+            "citation_quar": obs["citation_quar"],
+            "click_array": obs["click_array"]
         }

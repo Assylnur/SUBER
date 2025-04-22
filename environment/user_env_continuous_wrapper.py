@@ -14,6 +14,7 @@ class UserEnvContinuousWrapper(gym.Wrapper):
         for item in items:
             # topic embedding
             t = env.bert_model.encode(item.topics).mean(axis=0).astype(np.float32)
+            # u = env.bert_model.encode(env._user.interests).mean(axis=0).astype(np.float32)
             # normalized year & citation already in [0,1]
             y = np.array([item.quartile_year],  dtype=np.float32)
             c = np.array([item.quartile_cite], dtype=np.float32)
@@ -25,8 +26,8 @@ class UserEnvContinuousWrapper(gym.Wrapper):
         self.nn.fit(self.item_vecs)
 
         # 2) override action_space to Box(embed_dim+2)
-        low  = np.concatenate([-1.0*np.ones(embed_dim), [0.0], [0.0]])
-        high = np.concatenate([ 1.0*np.ones(embed_dim), [1.0], [1.0]])
+        low  = np.concatenate([-1.0*np.ones(self.embedding_dim), [0.0], [0.0]])
+        high = np.concatenate([ 1.0*np.ones(self.embedding_dim), [1.0], [1.0]])
         self.action_space = Box(low=low, high=high, dtype=np.float32)
 
         # keep the discrete for debugging if you like
