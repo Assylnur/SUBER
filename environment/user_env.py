@@ -80,6 +80,7 @@ class UserEnv(gym.Env):
         # self.user_list = self.users_loader.get_users()
         self.user_list = user_list
         self.num_users = len(self.user_list)
+        print([user.id for user in self.user_list])
 
         self.items_loader = items_loader
         self.item_ids = self.items_loader.load_all_ids()
@@ -122,9 +123,7 @@ class UserEnv(gym.Env):
 
     def reset(self,  seed: Optional[int] = None, options: Optional[dict] = None, user_id=None):
         super().reset(seed=seed)
-        # self.clean_memory()
-        
-        # self.recommended_paper = set()
+        self.clean_memory()
 
         if user_id is None:
             user_id = self.np_random.integers(low=0, high=self.num_users)
@@ -160,10 +159,10 @@ class UserEnv(gym.Env):
         # print(item)
         user_rating = self.rater.rate(self._user, item)
         # click = 1 if random.random() < user_rating else 0
-        if action in self._items_interact:
-            click = 0
-        else:
-            click = 1 if user_rating > 0.5 else 0
+        # if action in self._items_interact:
+        #     click = 0
+        # else:
+        click = 1 if user_rating > 0.5 else 0
         # print(f"Rating: {user_rating} >> {'clicked' if click else 'ignored'}")
 
         item_emb = self.bert_model.encode(item.topics).astype(np.float32).mean(axis=0)   # (384,)
@@ -196,7 +195,7 @@ class UserEnv(gym.Env):
 
         info = {
             "user_id": self._user.id,
-            "item_interact": self._items_interact,
+            "item_interact": tuple(int(x) for x in self._items_interact),
             "item_clicks": self._items_click
         }
 
@@ -224,6 +223,8 @@ class UserEnv(gym.Env):
 
         if action:
             interaction = self.memory.get_num_interaction(user_id=self._user.id, item_id=action)
+            interaction = np.array([interaction], dtype=np.int32)
+
             paper = self.items_loader.load_items_from_ids([action])[0]
             items_click = np.array(self._items_click)
             items_click = np.pad(items_click, (0, self.max_interactions - items_click.shape[0]), mode="constant", constant_values=0)
@@ -232,18 +233,18 @@ class UserEnv(gym.Env):
                 "history_embedding": hist_emb,
                 "user_topics_embedding": self.user_topics_embedding,
                 "interactions": interaction,
-                "publication_year_quar": paper.quartile_year,
-                "citation_quar": paper.quartile_cite,
-                "click_array": items_click
+                "publication_year_quar": np.array([paper.quartile_year], dtype=np.int32),
+                "citation_quar": np.array([paper.quartile_cite], dtype=np.int32),
+                "click_array": items_click.reshape(1, -1)
             }
 
         else:
             obs = {
                 "history_embedding": hist_emb,
                 "user_topics_embedding": self.user_topics_embedding,
-                "interactions": 0,
-                "publication_year_quar": -1,
-                "citation_quar": -1,
+                "interactions": np.array([0], dtype=np.int32),
+                "publication_year_quar": np.array([-1], dtype=np.int32),
+                "citation_quar": np.array([-1], dtype=np.int32),
                 "click_array": np.zeros((1, self.max_interactions))
             }
 

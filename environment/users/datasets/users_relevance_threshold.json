@@ -5,7 +5,7 @@
         "scientometrics and bibliometrics research",
         "Academic Publishing and Open Access"
       ],
-      "relevance_threshold": 0.7,
+      "relevance_threshold": 0.6,
       "novelty_preference": 0.66,
       "reputability_bias": 0.25
     },
