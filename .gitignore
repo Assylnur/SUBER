@@ -18,7 +18,9 @@ env/
 venv/
 .suber_env
 suber_env/
-notebooks/models/
+# notebooks/models/
+notebooks/scatchbooks/
+
 # environment/citations/datasets/
 # Others you don't want
 *.log
